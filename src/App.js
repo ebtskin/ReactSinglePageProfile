@@ -1,10 +1,9 @@
+import ProfilePage from "./features/profile/ProfilePage";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World! I'm here James. Full stack web/app developer</h1>
-    </div>
+    
+    <ProfilePage />
   );
 }
-
 export default App;
