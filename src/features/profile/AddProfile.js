@@ -1,24 +1,41 @@
 import InputFiled from "./InputFiled";
 import { useDispatch } from "react-redux";
 import { profileAdded } from "./profileSlice";
-import { useState } from 'react';
+import { addNewPost } from "./profileSlice";
 
-const AddProfile = ({ formInputFields, setFormInputFields }) => {
+const AddProfile = ({ formInputFields, setFormInputFields, title, setTitle }) => {
     const dispatch = useDispatch();
-    const [title, setTitle] = useState('AddPost');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(profileAdded(formInputFields))
+        dispatch(profileAdded(formInputFields));
+
+        const formData = new FormData();
+        formData.append("file", formInputFields.avatar);
+        formData.append("email", formInputFields.email);
+        formData.append("username", formInputFields.username);
+        formData.append("phone", formInputFields.phone);
+        
+        dispatch(addNewPost(formData));
+        
+
+        setFormInputFields({
+            avatar: null,
+            id: null,
+            username: "",
+            email: "",
+            phone: "",
+        });
     };
 
     return (
         <section className="add-profile">
             <form
                 className="add-profile-form"
-                onSubmit={(e) => handleSubmit(e)}
+                onSubmit={handleSubmit}
             >
                 <h3>{title}</h3>
+                <hr />
                 <InputFiled
                     formInputFields={formInputFields}
                     setFormInputFields={setFormInputFields}

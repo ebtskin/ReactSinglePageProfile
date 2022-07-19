@@ -11,11 +11,15 @@ const ProfilePage = () => {
         phone: "",
     });
 
+    const [title, setTitle] = useState("Add Post");
+
     return (
         <main className="profile-page">
             <AddProfile
                 formInputFields={formInputFields}
                 setFormInputFields={setFormInputFields}
+                title={title}
+                setTitle={setTitle}
             />
             <ProfileList />
         </main>

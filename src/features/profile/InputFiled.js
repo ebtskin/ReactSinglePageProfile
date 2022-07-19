@@ -14,8 +14,9 @@ const InputFiled = ({ formInputFields, setFormInputFields }) => {
         setFormInputFields(newInputs);
     };
 
-    const handleInputImage = ({ target: { name, files } }) => {
+    const handleInputImage = async ({ target: { name, files } }) => {
         const [file] = files;
+        console.log(file);
         const newInputs = { ...formInputFields, [name]: file };
         setFormInputFields(newInputs);
     };

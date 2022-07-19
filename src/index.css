@@ -52,7 +52,6 @@ button:hover {
 }
 
 .profile-cards {
-   
     margin: 10px;
     border-radius: 1rem;
     display: flex;
@@ -64,6 +63,7 @@ button:hover {
     display: flex;
     flex-wrap: wrap;
     border-radius: 1rem;
+    min-height: 100px;
 }
 
 .card-container {
@@ -96,9 +96,66 @@ button:hover {
 }
 
 .username {
-  text-align: center;
+    text-align: center;
 }
 
-.email, .phone{
-  margin: 10px;
+.email,
+.phone {
+    margin: 10px;
 }
+
+.profile-container button {
+    margin: 10px;
+    padding: 16px 32;
+    text-align: center;
+    height: 50px;
+    width: 100px;
+    font-weight: bolder;
+    background: rgb(243, 209, 209);
+    border: 1px solid cornsilk;
+    border-radius: 1rem;
+}
+
+.profile-container button:hover {
+    background: rgba(243, 209, 209, 0.621);
+}
+
+.add-profile-form h3,
+.add-profile-form hr {
+    margin: 9.5px 0;
+    text-align: center;
+}
+
+.add-profile-form hr {
+    background: rgb(172, 139, 244);
+    height: 3px;
+    border: none;
+}
+
+.profile-container hr {
+    background: rgb(227, 25, 170);
+    height: 3px;
+    border: none;
+}
+
+.form-buttons{
+    display: flex !important;
+    justify-content: center;
+}
+
+.profile-container .edit {
+    background: rgb(172, 139, 244);
+}
+
+.profile-container .edit:hover {
+    background: rgba(172, 139, 244, 0.43);
+}
+
+.profile-container .delete {
+    background: rgb(227, 25, 170);
+}
+
+.profile-container .delete:hover {
+    background: rgba(227, 25, 170, 0.331);
+}
+

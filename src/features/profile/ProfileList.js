@@ -1,35 +1,48 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectAllProfile } from "./profileSlice";
 import { useState, useEffect } from "react";
 import ProfileCard from "./ProfileCard";
 
 const ProfileList = () => {
-    const [usersProfiles, setUsersProfiles] = useState([]);
-    const profiles = useSelector((state) => state.profiles);
+    const [profiles, setProfiles] = useState();
+    const allProfiles = useSelector(selectAllProfile);
 
     useEffect(() => {
-        setUsersProfiles(profiles);
-    }, [profiles]);
+        setProfiles(allProfiles);
+    }, [allProfiles]);
 
     return (
-        <article className="profile-cards">
-            <div className="card-containers">
-                {profiles.length < 1 && <h3>No Profiles</h3>}
-                {profiles.map((profile) => {
-                    let data = [];
-                    for (const [field, value] of Object.entries(profile)) {
-                        data.push(
-                            <ProfileCard
-                                key={field}
-                                field={field}
-                                value={value}
-                            />
+        <section className="profile-container">
+            <button onClick={() => setProfiles(null)}>Clear</button>
+            <hr />
+            <article className="profile-cards">
+                <div className="card-containers">
+                    {allProfiles?.length < 1 && <h3>No Profiles</h3>}
+                    {profiles?.map((profile) => {
+                        let data = [];
+                        for (const [field, value] of Object.entries(profile)) {
+                            data.push(
+                                <ProfileCard
+                                    key={field + profile.id}
+                                    field={field}
+                                    value={value}
+                                />
+                            );
+                        }
+                        return (
+                            <div className="card-container">
+                                {" "}
+                                {data}{" "}
+                                <div className="form-buttons">
+                                    <button className="edit">Edit</button>{" "}
+                                    <button className="delete">Delete</button>
+                                </div>
+                            </div>
                         );
-                    }
-                    return (<div className = "card-container" > { data } </div>);
-                })}
-            </div>
-        </article>
+                    })}
+                </div>
+            </article>
+        </section>
     );
 };
 
