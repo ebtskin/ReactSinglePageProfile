@@ -21,7 +21,12 @@ const ProfilePage = () => {
                 title={title}
                 setTitle={setTitle}
             />
-            <ProfileList />
+            <ProfileList
+                title={title}
+                setTitle={setTitle}
+                formInputFields={formInputFields}
+                setFormInputFields={setFormInputFields}
+            />
         </main>
     );
 };

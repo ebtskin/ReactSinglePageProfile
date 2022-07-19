@@ -59,7 +59,6 @@ const InputFiled = ({ formInputFields, setFormInputFields }) => {
                 value={formInputFields.pic}
                 accept="image/png, image/jpeg"
                 onChange={handleInputImage}
-                required
             />
         </>
     );

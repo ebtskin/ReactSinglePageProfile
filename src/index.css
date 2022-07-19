@@ -51,6 +51,10 @@ button:hover {
     color: white;
 }
 
+.edit-profile .add-profile-form button{
+    color: rgb(227, 25, 170);
+}
+
 .profile-cards {
     margin: 10px;
     border-radius: 1rem;
@@ -93,6 +97,25 @@ button:hover {
     box-shadow: 0 4px 8px 0 rgb(100, 94, 94);
     border-radius: 1rem;
     margin: 10px;
+}
+
+.edit-profile{
+    box-shadow: 0 4px 8px 0 rgb(100, 94, 94);
+    border-radius: 1rem;
+    margin: 10px;
+    background:rgb(172, 139, 244)
+}
+
+.edit-profile .add-profile-form hr {
+    background: rgb(234, 228, 246);
+    height: 3px;
+    border: none;
+}
+
+.edit-profile .add-profile-form h3 {
+    margin: 9.5px 0;
+    text-align: center;
+    color: white;
 }
 
 .username {

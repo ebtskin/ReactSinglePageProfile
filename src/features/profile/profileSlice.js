@@ -37,6 +37,19 @@ export const editPost = createAsyncThunk('posts/editPost', async (editPost) => {
     }
 })
 
+export const getPostByID = createAsyncThunk('post/getPostById', async (id) => {
+    try {
+        const response = await axios.get(POSTSID_URL, {
+            params: {
+                id: id,
+            },
+        });
+        return response.data;
+    } catch (err) {
+        console.error(err);
+    }
+})
+
 const profilesSlice = createSlice({
     name: 'profile',
     initialState,
@@ -68,7 +81,6 @@ const profilesSlice = createSlice({
                 state.status = "succeeded";
                 action.payload.forEach(item => {
                     const { _id : id, username, email, phone, avatar: {data}} = item;
-                    console.log(id, username, email, phone, data)
                     state.posts.push({ username, id, data, email, phone });
                 })
             })
@@ -82,10 +94,13 @@ const profilesSlice = createSlice({
             .addCase(editPost.fulfilled, (state, action) => {
                 state.status = "succeeded";
                 const { _id: id, username, email, phone, avatar: { data } } = action.payload;
-                const updatedPosts = state.posts.filter(post => post._id !== id).push({username, id, data, email, phone})
+                const updatedPosts = state.posts.filter(post => post.id !== id);
+                updatedPosts.push({ username, id, data, email, phone });
                 state.posts = updatedPosts;
-                console.log(state.posts);
-
+            })
+            .addCase(getPostByID.fulfilled, (state, action) => {
+                const { payload } = action.payload;
+                return payload;
             })
     }
 })

@@ -1,23 +1,27 @@
 import InputFiled from "./InputFiled";
 import { useDispatch } from "react-redux";
-import { profileAdded } from "./profileSlice";
-import { addNewPost } from "./profileSlice";
+import { profileAdded,addNewPost, editPost} from "./profileSlice";
 
-const AddProfile = ({ formInputFields, setFormInputFields, title, setTitle }) => {
+
+const AddProfile = ({ formInputFields, setFormInputFields, title}) => {
     const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(profileAdded(formInputFields));
-
         const formData = new FormData();
         formData.append("file", formInputFields.avatar);
         formData.append("email", formInputFields.email);
         formData.append("username", formInputFields.username);
         formData.append("phone", formInputFields.phone);
+        if (title && title === "Add Post") {
+            dispatch(profileAdded(formInputFields));
+            dispatch(addNewPost(formData));
+        }
         
-        dispatch(addNewPost(formData));
-        
+        if (title && title === "Edit Post") {
+            formData.append("id", formInputFields.id);
+            dispatch(editPost(formData));
+        }
 
         setFormInputFields({
             avatar: null,
@@ -29,18 +33,19 @@ const AddProfile = ({ formInputFields, setFormInputFields, title, setTitle }) =>
     };
 
     return (
-        <section className="add-profile">
-            <form
-                className="add-profile-form"
-                onSubmit={handleSubmit}
-            >
+        <section
+            className={
+                title && title === "Add Post" ? "add-profile" : "edit-profile"
+            }
+        >
+            <form className="add-profile-form" onSubmit={handleSubmit}>
                 <h3>{title}</h3>
                 <hr />
                 <InputFiled
                     formInputFields={formInputFields}
                     setFormInputFields={setFormInputFields}
                 />
-                <button>Submit</button>
+                <button>{title && title === "Add Post" ? "Submit" : "Edit Post"}</button>
             </form>
         </section>
     );
