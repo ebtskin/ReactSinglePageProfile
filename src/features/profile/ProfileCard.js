@@ -1,4 +1,6 @@
-const ProfileCard = ({ field, value }) => {
+import React from "react";
+
+let ProfileCard = ({ field, value }) => {
     
     return (
         <div className="card">
@@ -23,5 +25,5 @@ const ProfileCard = ({ field, value }) => {
         </div>
     );
 };
-
+ProfileCard = React.memo(ProfileCard);
 export default ProfileCard;

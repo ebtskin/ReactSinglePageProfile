@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { profileAdded,addNewPost, editPost} from "./profileSlice";
 
 
-const AddProfile = ({ formInputFields, setFormInputFields, title}) => {
+const AddProfile = ({ formInputFields, setFormInputFields, title, setTitle}) => {
     const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
@@ -14,13 +14,13 @@ const AddProfile = ({ formInputFields, setFormInputFields, title}) => {
         formData.append("username", formInputFields.username);
         formData.append("phone", formInputFields.phone);
         if (title && title === "Add Post") {
-            dispatch(profileAdded(formInputFields));
             dispatch(addNewPost(formData));
         }
         
         if (title && title === "Edit Post") {
             formData.append("id", formInputFields.id);
             dispatch(editPost(formData));
+            setTitle("Add Post");
         }
 
         setFormInputFields({

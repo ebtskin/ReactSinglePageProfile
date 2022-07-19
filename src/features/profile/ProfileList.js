@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { selectAllProfile, getPostByID } from "./profileSlice";
+import { selectAllProfile, getPostByID,deletePostByID } from "./profileSlice";
 import { useState, useEffect } from "react";
 import ProfileCard from "./ProfileCard";
 
@@ -26,6 +26,15 @@ const ProfileList = ({ title, setTitle, setFormInputFields }) => {
             phone: phone,
         });
     };
+
+    const handleDelete = async (ids) => {
+        try {
+            const deleteResponse = await dispatch(deletePostByID(ids))
+            console.log(deleteResponse);
+        } catch (err) {
+            console.error(err);
+        }
+    }
 
     return (
         <section className="profile-container">
@@ -58,7 +67,7 @@ const ProfileList = ({ title, setTitle, setFormInputFields }) => {
                                     >
                                         Edit
                                     </button>{" "}
-                                    <button className="delete">Delete</button>
+                                    <button className="delete" onClick={()=>handleDelete(profile.id)}>Delete</button>
                                 </div>
                             </div>
                         );
