@@ -24,7 +24,7 @@ const ProfileList = ({ title, setTitle, setFormInputFields }) => {
     useEffect(() => {
         const filteredResults = profiles?.filter(
             (post) =>
-                post.username.includes(search) || post.email.includes(search)
+                post.username.toLowerCase().includes(search.toLowerCase())
         );
         setProfiles(filteredResults);
         if (search.length < 1) {
