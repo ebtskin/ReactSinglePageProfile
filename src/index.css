@@ -37,13 +37,25 @@ input[type="file"] {
     height: 2.7rem;
 }
 
+input[type='text'] {
+    height: 50px;
+    font-size: 17px;
+    
+}
+
+input[type='text']:focus {
+    outline: none !important;
+    border-color: rgb(172, 139, 244);
+    box-shadow: 0 0 10px rgb(172, 139, 244);
+}
+
 .add-profile-form button {
     height: 3rem;
     font-weight: bolder;
     font-size: 1.2rem;
     background: rgb(249, 249, 250);
     border: 1px solid lavenderblush;
-    border-radius: 1px;
+    border-radius: 1rem;
     margin: 5px 0;
 }
 button:hover {
@@ -51,8 +63,9 @@ button:hover {
     color: white;
 }
 
-.edit-profile .add-profile-form button{
+.edit-profile .add-profile-form button {
     color: rgb(227, 25, 170);
+    border-radius: 1rem;
 }
 
 .profile-cards {
@@ -77,6 +90,46 @@ button:hover {
     margin: 5px;
 }
 
+.nav {
+    display: flex;
+    justify-content: center;
+}
+
+.loading {
+    margin: 10px;
+}
+.search {
+    flex-grow: 1;
+}
+
+.search input[type="text"]:hover {
+    border: 1px solid rgb(172, 139, 244);
+    transition: 0.3s;
+}
+.search input[type="text"]:focus {
+    outline: none !important;
+    border-color: rgb(172, 139, 244);
+    box-shadow: 0 0 10px rgb(172, 139, 244);
+}
+
+.search input[type="text"] {
+    padding: 14px 32px;
+    font-size: 17px;
+    width: 50%;
+    border: 1px solid cornsilk;
+    margin: 10px;
+    border-radius: 1rem;
+    background: rgb(251, 244, 240);
+}
+
+.clear {
+    margin-right: 75px !important;
+}
+.search label {
+    position: absolute;
+    left: -99999px;
+}
+
 .profile-cards img {
     height: 250px;
     width: 250px;
@@ -99,11 +152,11 @@ button:hover {
     margin: 10px;
 }
 
-.edit-profile{
+.edit-profile {
     box-shadow: 0 4px 8px 0 rgb(100, 94, 94);
     border-radius: 1rem;
     margin: 10px;
-    background:rgb(172, 139, 244)
+    background: rgb(172, 139, 244);
 }
 
 .edit-profile .add-profile-form hr {
@@ -118,6 +171,11 @@ button:hover {
     color: white;
 }
 
+.edit-profile input[type="text"]:focus{
+    outline: none !important;
+    border-color: rgb(184, 181, 183);
+    box-shadow: 0 0 8px rgb(255, 248, 253);
+}
 .username {
     text-align: center;
 }
@@ -161,7 +219,7 @@ button:hover {
     border: none;
 }
 
-.form-buttons{
+.form-buttons {
     display: flex !important;
     justify-content: center;
 }
@@ -181,4 +239,3 @@ button:hover {
 .profile-container .delete:hover {
     background: rgba(227, 25, 170, 0.331);
 }
-

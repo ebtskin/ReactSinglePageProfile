@@ -157,6 +157,7 @@ const profilesSlice = createSlice({
 });
 
 export const selectAllProfile = (state) => state.profiles.posts;
+export const getStateError = (state) => state.profiles.status;
 export const clearAllPosts = (state) => state.posts.push([]);
 export const { profileAdded } = profilesSlice.actions;
 export default profilesSlice.reducer;

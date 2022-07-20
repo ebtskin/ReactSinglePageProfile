@@ -26,6 +26,7 @@ const InputFiled = ({ formInputFields, setFormInputFields }) => {
             <label htmlFor="username">Username:</label>
             <input
                 ref={inputRef}
+                type="text"
                 id="username"
                 name="username"
                 value={formInputFields.username}
@@ -35,6 +36,7 @@ const InputFiled = ({ formInputFields, setFormInputFields }) => {
             />
             <label htmlFor="email">Email:</label>
             <input
+                type="text"
                 id="email"
                 name="email"
                 value={formInputFields.email}
@@ -44,6 +46,7 @@ const InputFiled = ({ formInputFields, setFormInputFields }) => {
             />
             <label htmlFor="phone">Phone Number:</label>
             <input
+                type="text"
                 id="phone"
                 name="phone"
                 value={formInputFields.phone}
